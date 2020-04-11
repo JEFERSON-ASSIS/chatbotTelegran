@@ -5,9 +5,12 @@ STATE1 = 1
 STATE2 = 2
 
 def welcome(update, context):
-    message = 'Olá, ' + update.message.from_user.first_name + '!'
-    print(message)
-    context.bot.send_message(chat_id=update.effective_chat.id, text=message)
+    try:
+        firstName = update.message.from_user.first_name
+        message = 'Olá, ' + firstName + '! \n' + 'digite /atendimento para ver as opções'
+        context.bot.send_message(chat_id=update.effective_chat.id, text=message)
+    except Exception as e:
+        print(str(e))
 
 def Atendimento(update, context):
     message = '''Qual tema você deseja saber mais hoje?\n
@@ -17,17 +20,17 @@ def Atendimento(update, context):
     return STATE1
 
 def inputAtendimento(update, context):
-    atendimento= update.message.text
+    atendimento= (update.message.text).lower()
     print(atendimento)
     if Atendimento == '1' or Atendimento == 'Resiliência' or Atendimento == 'resiliencia':
         message = "https://www.youtube.com/watch?v=9PWedS78wfc&t=3s"
         context.bot.send_message(chat_id=update.effective_chat.id, text=message)
         return STATE2
-    elif Atendimento == '2' or Atendimento == 'Autoconhecimento':
+    elif (Atendimento == '2' or Atendimento == 'Autoconhecimento'):
         message = "https://www.youtube.com/watch?v=RZhXIpXlkKU"
         context.bot.send_message(chat_id=update.effective_chat.id, text=message)
         return STATE2
-
+    
 def inputAssunto(update, context):
     message = "Muito obrigada pelo em breve novidades!!"
     context.bot.send_message(chat_id=update.effective_chat.id, text=message)
@@ -58,6 +61,6 @@ def main():
     updater.idle()
 
 if __name__ == "__main__":
-    main()    
+    main()   
       
     
