@@ -20,14 +20,17 @@ def Atendimento(update, context):
     return STATE1
 
 def inputAtendimento(update, context):
-    atendimento= (update.message.text).lower()
-    print(atendimento)
-    if Atendimento == '1' or Atendimento == 'Resiliência' or Atendimento == 'resiliencia':
-        message = "https://www.youtube.com/watch?v=9PWedS78wfc&t=3s"
+    Atendimento= (update.message.text).lower()
+    print(Atendimento)
+    if (Atendimento == '1' or Atendimento == 'Resiliência' or Atendimento == 'resiliencia'):
+        message = '''Segue abaixo o Video com mais informações: https://www.youtube.com/watch?v=9PWedS78wfc&t=3s \n
+                    e qualquer duvida estamos a disposição!!'''
         context.bot.send_message(chat_id=update.effective_chat.id, text=message)
         return STATE2
+
     elif (Atendimento == '2' or Atendimento == 'Autoconhecimento'):
-        message = "https://www.youtube.com/watch?v=RZhXIpXlkKU"
+        message = '''Segue abaixo o Video com mais informações: https://www.youtube.com/watch?v=RZhXIpXlkKU \n
+                    e qualquer duvida estamos a disposição!!'''
         context.bot.send_message(chat_id=update.effective_chat.id, text=message)
         return STATE2
     
@@ -56,11 +59,10 @@ def main():
 
     updater.dispatcher.add_handler(conversation_handler)
    
-    updater.start_polling()
     print(str(updater))
+    updater.start_polling()
     updater.idle()
 
 if __name__ == "__main__":
-    main()   
-      
+    main()    
     
