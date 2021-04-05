@@ -1,7 +1,7 @@
 # chatbot Telegran
 
 ## Descrição do Projeto
-<p align="center">🚀 Nesse projeto utilizo o python e telegran para criar um chatbot. </p>
+<p align="center">🚀 In this project I use python and telegran to create a chatbot use it on the telegran </p>
 
 <h1 align="center">
     <a href="https://www.python.org/">🔗 Python</a> <br>
